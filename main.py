@@ -80,7 +80,20 @@ class Customer:
     @property
     def firstName(self):
         return self.TelegramID
-
+def getTables():
+    tables = []
+    with conn.cursor() as cur:
+        cur.execute("select relname from pg_class where relkind='r' and relname !~ '^(pg_|sql_)';")
+        data = cur.fetchall()
+        for item in data:
+            item = item[0]
+            if item != 'users':
+                cur.execute(f"SELECT obj_description(oid) FROM {item} WHERE relkind = 'r'")
+                comment = cur.fetchone()
+                print(comment)
+                tables.append([item,comment])
+    return tables
+                
 
 def BuyHandler(id, message):
     user = Customer(id)
@@ -119,5 +132,5 @@ def menuHandler(message):
     elif message.text == config['Buttons']['Stock']:
         StockHandler(user.id, message)
 
-
-bot.polling()
+getTables()
+#bot.polling()
