@@ -1,0 +1,13 @@
+{
+    "Buttons":{
+        "Buy": "Купить",
+        "Stock": "Наличие",
+        "Profile" : "Профиль"
+    },
+    "Database":{
+        "Host" : "localhost",
+        "Name" : "Shop",
+        "User" : "postgres",
+        "Password" : "123123123"
+    }
+}
