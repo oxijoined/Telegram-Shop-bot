@@ -5,8 +5,8 @@ import os
 import psycopg2
 import telebot
 from dotenv import load_dotenv
-from keyboa import Keyboa
-
+from keyboa import  Keyboa
+##здесь быль фурри
 logging.basicConfig(
     level=logging.DEBUG,
     filename="Log.log",
